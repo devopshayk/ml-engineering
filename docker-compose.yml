@@ -5,12 +5,21 @@ services:
     image: mysql
     restart: always
     ports: 
-      - "33060"
+      - "33060:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - type: bind
         source: ./mysql
         target: /var/lib/mysql
+  jupyter:
+    image: quay.io/jupyter/scipy-notebook:2024-03-14
+    restart: always
+    ports: 
+      - "10000:8888"
+    volumes:
+      - type: bind
+        source: ./jupyter
+        target: /home/jovyan/work
 volumes:
   myapp:
