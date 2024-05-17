@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+  mysql-db:
+    image: mysql
+    restart: always
+    ports: 
+      - "33060"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - type: bind
+        source: ./mysql
+        target: /var/lib/mysql
+volumes:
+  myapp:
